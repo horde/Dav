@@ -451,7 +451,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Dav">
-      <file name="UPGRADING" role="doc" />
+      <file name="UPGRADING.rst" role="doc" />
      </dir> <!-- /doc/Horde/Dav -->
     </dir> <!-- /doc/Horde -->
    </dir> <!-- /doc -->
@@ -908,7 +908,7 @@
    <install as="Horde/Dav/vendor/sabre/vobject/lib/Version.php" name="bundle/vendor/sabre/vobject/lib/Version.php" />
    <install as="Horde/Dav/vendor/sabre/vobject/LICENSE" name="bundle/vendor/sabre/vobject/LICENSE" />
    <install as="Horde/Dav/vendor/sabre/vobject/README.md" name="bundle/vendor/sabre/vobject/README.md" />
-   <install as="UPGRADING" name="doc/Horde/Dav/UPGRADING" />
+   <install as="UPGRADING.rst" name="doc/Horde/Dav/UPGRADING.rst" />
    <install as="Horde/Dav/Auth.php" name="lib/Horde/Dav/Auth.php" />
    <install as="Horde/Dav/Calendar/Backend.php" name="lib/Horde/Dav/Calendar/Backend.php" />
    <install as="Horde/Dav/Collection.php" name="lib/Horde/Dav/Collection.php" />
