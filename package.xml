@@ -451,7 +451,6 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Dav">
-      <file name="LICENSE" role="doc" />
       <file name="UPGRADING" role="doc" />
      </dir> <!-- /doc/Horde/Dav -->
     </dir> <!-- /doc/Horde -->
@@ -511,6 +510,7 @@
      </dir> <!-- /migration/Horde/Dav -->
     </dir> <!-- /migration/Horde -->
    </dir> <!-- /migration -->
+   <file name="LICENSE" role="doc" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -908,7 +908,6 @@
    <install as="Horde/Dav/vendor/sabre/vobject/lib/Version.php" name="bundle/vendor/sabre/vobject/lib/Version.php" />
    <install as="Horde/Dav/vendor/sabre/vobject/LICENSE" name="bundle/vendor/sabre/vobject/LICENSE" />
    <install as="Horde/Dav/vendor/sabre/vobject/README.md" name="bundle/vendor/sabre/vobject/README.md" />
-   <install as="LICENSE" name="doc/Horde/Dav/LICENSE" />
    <install as="UPGRADING" name="doc/Horde/Dav/UPGRADING" />
    <install as="Horde/Dav/Auth.php" name="lib/Horde/Dav/Auth.php" />
    <install as="Horde/Dav/Calendar/Backend.php" name="lib/Horde/Dav/Calendar/Backend.php" />
@@ -922,6 +921,7 @@
    <install as="Horde/Dav/Storage/Base.php" name="lib/Horde/Dav/Storage/Base.php" />
    <install as="Horde/Dav/Storage/Sql.php" name="lib/Horde/Dav/Storage/Sql.php" />
    <install as="Horde/Dav/Translation.php" name="lib/Horde/Dav/Translation.php" />
+   <install as="LICENSE" name="LICENSE" />
    <install as="locale/da/LC_MESSAGES/Horde_Dav.mo" name="locale/da/LC_MESSAGES/Horde_Dav.mo" />
    <install as="locale/da/LC_MESSAGES/Horde_Dav.po" name="locale/da/LC_MESSAGES/Horde_Dav.po" />
    <install as="locale/Horde_Dav.pot" name="locale/Horde_Dav.pot" />
