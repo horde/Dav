@@ -7,3 +7,41 @@ description: >
   library.
 list: dev
 type: library
+authors:
+  -
+    name: Jan Schneider
+    user: jan
+    email: jan@horde.org
+    active: true
+    role: lead
+version:
+  release: 2.0.0
+  api: 2.0.0
+state:
+  release: stable
+  api: stable
+license:
+  identifier: BSD-2-Clause
+  uri: http://www.horde.org/licenses/bsd
+dependencies:
+  required:
+    php: ^5.4.1 || ^7
+    pear:
+      pear.horde.org/Horde_Auth: ^2
+      pear.horde.org/Horde_Core: ^2
+      pear.horde.org/Horde_Http: ^2
+      pear.horde.org/Horde_Stream: ^1.2
+      pear.horde.org/Horde_Translation: ^2.2
+    ext:
+      ctype: '*'
+      date: '*'
+      dom: '*'
+      iconv: '*'
+      libxml: '*'
+      mbstring: '*'
+      pcre: '*'
+      simplexml: '*'
+      spl: '*'
+  optional:
+    ext:
+      curl: '*'
