@@ -10,7 +10,7 @@
   <email>jan@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-04-27</date>
+ <date>2017-10-27</date>
  <version>
   <release>2.0.0</release>
   <api>2.0.0</api>
@@ -301,6 +301,7 @@
         </dir> <!-- /bundle/vendor/sabre/dav/lib/DAVACL -->
        </dir> <!-- /bundle/vendor/sabre/dav/lib -->
        <file name="ChangeLog.md" role="doc" />
+       <file name="composer.json" role="php" />
        <file name="CONTRIBUTING.md" role="doc" />
        <file name="LICENSE" role="doc" />
        <file name="README.md" role="doc" />
@@ -315,6 +316,7 @@
         <file name="Version.php" role="php" />
        </dir> <!-- /bundle/vendor/sabre/event/lib -->
        <file name="CHANGELOG.md" role="doc" />
+       <file name="composer.json" role="php" />
        <file name="LICENSE" role="doc" />
        <file name="README.md" role="doc" />
       </dir> <!-- /bundle/vendor/sabre/event -->
@@ -345,6 +347,7 @@
         <file name="Version.php" role="php" />
        </dir> <!-- /bundle/vendor/sabre/http/lib -->
        <file name="ChangeLog.md" role="doc" />
+       <file name="composer.json" role="php" />
        <file name="LICENSE" role="doc" />
        <file name="README.md" role="doc" />
       </dir> <!-- /bundle/vendor/sabre/http -->
@@ -438,6 +441,7 @@
         <file name="Version.php" role="php" />
        </dir> <!-- /bundle/vendor/sabre/vobject/lib -->
        <file name="ChangeLog.md" role="doc" />
+       <file name="composer.json" role="php" />
        <file name="LICENSE" role="doc" />
        <file name="README.md" role="doc" />
       </dir> <!-- /bundle/vendor/sabre/vobject -->
@@ -491,6 +495,12 @@
       <file name="Horde_Dav.po" role="data" />
      </dir> <!-- /locale/hu/LC_MESSAGES -->
     </dir> <!-- /locale/hu -->
+    <dir name="tr">
+     <dir name="LC_MESSAGES">
+      <file name="Horde_Dav.mo" role="data" />
+      <file name="Horde_Dav.po" role="data" />
+     </dir> <!-- /locale/tr/LC_MESSAGES -->
+    </dir> <!-- /locale/tr -->
     <file name="Horde_Dav.pot" role="data" />
    </dir> <!-- /locale -->
    <dir name="migration">
@@ -585,6 +595,7 @@
  <phprelease>
   <filelist>
    <install as="Sabre/DAV/ChangeLog.md" name="bundle/vendor/sabre/dav/ChangeLog.md" />
+   <install as="Horde/Dav/vendor/sabre/dav/composer.json" name="bundle/vendor/sabre/dav/composer.json" />
    <install as="Sabre/DAV/CONTRIBUTING.md" name="bundle/vendor/sabre/dav/CONTRIBUTING.md" />
    <install as="Sabre/DAV/LICENSE" name="bundle/vendor/sabre/dav/LICENSE" />
    <install as="Sabre/DAV/README.md" name="bundle/vendor/sabre/dav/README.md" />
@@ -793,6 +804,7 @@
    <install as="Sabre/Event/CHANGELOG.md" name="bundle/vendor/sabre/event/CHANGELOG.md" />
    <install as="Sabre/Event/LICENSE" name="bundle/vendor/sabre/event/LICENSE" />
    <install as="Sabre/Event/README.md" name="bundle/vendor/sabre/event/README.md" />
+   <install as="Horde/Dav/vendor/sabre/event/composer.json" name="bundle/vendor/sabre/event/composer.json" />
    <install as="Sabre/Event/EventEmitter.php" name="bundle/vendor/sabre/event/lib/EventEmitter.php" />
    <install as="Sabre/Event/EventEmitterInterface.php" name="bundle/vendor/sabre/event/lib/EventEmitterInterface.php" />
    <install as="Sabre/Event/EventEmitterTrait.php" name="bundle/vendor/sabre/event/lib/EventEmitterTrait.php" />
@@ -819,6 +831,7 @@
    <install as="Sabre/HTTP/URLUtil.php" name="bundle/vendor/sabre/http/lib/URLUtil.php" />
    <install as="Sabre/HTTP/Util.php" name="bundle/vendor/sabre/http/lib/Util.php" />
    <install as="Sabre/HTTP/Version.php" name="bundle/vendor/sabre/http/lib/Version.php" />
+   <install as="Horde/Dav/vendor/sabre/http/composer.json" name="bundle/vendor/sabre/http/composer.json" />
    <install as="Sabre/HTTP/Auth/AbstractAuth.php" name="bundle/vendor/sabre/http/lib/Auth/AbstractAuth.php" />
    <install as="Sabre/HTTP/Auth/AWS.php" name="bundle/vendor/sabre/http/lib/Auth/AWS.php" />
    <install as="Sabre/HTTP/Auth/Basic.php" name="bundle/vendor/sabre/http/lib/Auth/Basic.php" />
@@ -826,6 +839,7 @@
    <install as="Sabre/VObject/ChangeLog.md" name="bundle/vendor/sabre/vobject/ChangeLog.md" />
    <install as="Sabre/VObject/LICENSE" name="bundle/vendor/sabre/vobject/LICENSE" />
    <install as="Sabre/VObject/README.md" name="bundle/vendor/sabre/vobject/README.md" />
+   <install as="Horde/Dav/vendor/sabre/vobject/composer.json" name="bundle/vendor/sabre/vobject/composer.json" />
    <install as="Sabre/VObject/Cli.php" name="bundle/vendor/sabre/vobject/lib/Cli.php" />
    <install as="Sabre/VObject/Component.php" name="bundle/vendor/sabre/vobject/lib/Component.php" />
    <install as="Sabre/VObject/DateTimeParser.php" name="bundle/vendor/sabre/vobject/lib/DateTimeParser.php" />
@@ -913,6 +927,8 @@
    <install as="locale/da/LC_MESSAGES/Horde_Dav.po" name="locale/da/LC_MESSAGES/Horde_Dav.po" />
    <install as="locale/hu/LC_MESSAGES/Horde_Dav.mo" name="locale/hu/LC_MESSAGES/Horde_Dav.mo" />
    <install as="locale/hu/LC_MESSAGES/Horde_Dav.po" name="locale/hu/LC_MESSAGES/Horde_Dav.po" />
+   <install as="locale/tr/LC_MESSAGES/Horde_Dav.mo" name="locale/tr/LC_MESSAGES/Horde_Dav.mo" />
+   <install as="locale/tr/LC_MESSAGES/Horde_Dav.po" name="locale/tr/LC_MESSAGES/Horde_Dav.po" />
    <install as="migration/1_horde_dav_base_tables.php" name="migration/Horde/Dav/1_horde_dav_base_tables.php" />
    <install as="migration/2_horde_dav_remove_unique_index.php" name="migration/Horde/Dav/2_horde_dav_remove_unique_index.php" />
   </filelist>
@@ -1133,7 +1149,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-04-27</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * [jan] Add Turkish translation (İTÜ BİDB &lt;sistemdestek@itu.edu.tr&gt;).
