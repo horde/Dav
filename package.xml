@@ -10,7 +10,7 @@
   <email>jan@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-27</date>
+ <date>2017-10-30</date>
  <version>
   <release>2.0.0</release>
   <api>2.0.0</api>
@@ -451,6 +451,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Dav">
+      <file name="CHANGES" role="doc" />
       <file name="LICENSE" role="doc" />
       <file name="UPGRADING" role="doc" />
      </dir> <!-- /doc/Horde/Dav -->
@@ -908,6 +909,7 @@
    <install as="Sabre/VObject/timezonedata/php-bc.php" name="bundle/vendor/sabre/vobject/lib/timezonedata/php-bc.php" />
    <install as="Sabre/VObject/timezonedata/php-workaround.php" name="bundle/vendor/sabre/vobject/lib/timezonedata/php-workaround.php" />
    <install as="Sabre/VObject/timezonedata/windowszones.php" name="bundle/vendor/sabre/vobject/lib/timezonedata/windowszones.php" />
+   <install as="CHANGES" name="doc/Horde/Dav/CHANGES" />
    <install as="LICENSE" name="doc/Horde/Dav/LICENSE" />
    <install as="UPGRADING" name="doc/Horde/Dav/UPGRADING" />
    <install as="Horde/Dav/Auth.php" name="lib/Horde/Dav/Auth.php" />
@@ -1149,7 +1151,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-27</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/bsd">BSD-2-Clause</license>
    <notes>
 * [jan] Add Turkish translation (İTÜ BİDB &lt;sistemdestek@itu.edu.tr&gt;).
