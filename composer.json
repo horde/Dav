@@ -43,9 +43,6 @@
     "autoload": {
         "psr-0": {
             "Horde_Dav": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Dav\\": "src/"
         }
     }
 }
