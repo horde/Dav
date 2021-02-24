@@ -1,7 +1,7 @@
 {
     "name": "horde/dav",
     "description": "WebDAV, CalDAV, and CardDAV library",
-    "type": "library",
+    "type": "horde-library",
     "homepage": "https://www.horde.org",
     "license": "BSD-2-Clause",
     "authors": [
@@ -11,21 +11,22 @@
             "role": "lead"
         }
     ],
-    "version": "2.0.0",
-    "time": "2017-11-11",
+    "version": "2.0.0alpha1",
+    "time": "2021-02-24",
     "repositories": [
         {
-            "type": "pear",
-            "url": "https://pear.horde.org"
+            "type": "composer",
+            "url": "https://horde-satis.maintaina.com/"
         }
     ],
     "require": {
+        "horde/horde-installer-plugin": "*",
         "php": "^5.4.1 || ^7",
-        "pear-pear.horde.org/Horde_Auth": "^2",
-        "pear-pear.horde.org/Horde_Core": "^2",
-        "pear-pear.horde.org/Horde_Http": "^2",
-        "pear-pear.horde.org/Horde_Stream": "^1.2",
-        "pear-pear.horde.org/Horde_Translation": "^2.2",
+        "horde/auth": "^2",
+        "horde/core": "^2",
+        "horde/http": "^2",
+        "horde/stream": "^1.2",
+        "horde/translation": "^2.2",
         "ext-ctype": "*",
         "ext-date": "*",
         "ext-dom": "*",
@@ -39,13 +40,12 @@
     "suggest": {
         "ext-curl": "*"
     },
-    "replace": {
-        "pear-pear.horde.org/Horde_Dav": "2.*",
-        "pear-horde/Horde_Dav": "2.*"
-    },
     "autoload": {
         "psr-0": {
             "Horde_Dav": "lib/"
+        },
+        "psr-4": {
+            "Horde\\Dav\\": "src/"
         }
     }
 }

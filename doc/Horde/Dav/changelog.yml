@@ -1,6 +1,6 @@
 ---
-2.0.0:
-  api: 2.0.0
+2.0.0alpha1:
+  api: 2.0.0alpha1
   state:
     release: stable
     api: stable
