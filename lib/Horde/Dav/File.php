@@ -12,6 +12,7 @@
  */
 
 use \Sabre\DAV;
+use \Sabre\Uri;
 
 /**
  * A file object.
@@ -111,7 +112,7 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function getName()
     {
-        list($dir, $base) = DAV\URLUtil::splitPath($this->_path);
+        list($dir, $base) = Uri\split($this->_path);
         return $base;
     }
 
@@ -253,7 +254,7 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
             }
         }
         if (isset($this->_item['modified'])) {
-            $response['{DAV:}getlastmodified'] = new DAV\Property\GetLastModified(
+            $response['{DAV:}getlastmodified'] = new DAV\Xml\Property\GetLastModified(
                 $this->_item['modified']
             );
         }

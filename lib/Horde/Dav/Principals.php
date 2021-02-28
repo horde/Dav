@@ -13,6 +13,7 @@
 
 use Sabre\DAV;
 use Sabre\DAVACL;
+use Sabre\Uri;
 
 /**
  * Backend implementation for listing and managing principals (users and
@@ -82,7 +83,7 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      */
     public function getPrincipalByPath($path)
     {
-        list($prefix, $user) = DAV\URLUtil::splitPath($path);
+        list($prefix, $user) = Uri\split($path);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }

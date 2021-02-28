@@ -14,7 +14,7 @@
 use Sabre\DAV;
 use Sabre\DAVACL;
 use Sabre\CalDAV;
-
+use Sabre\Uri;
 /**
  * A collection (directory) object.
  *
@@ -95,7 +95,7 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      */
     public function getName()
     {
-        list($dir, $base) = DAV\URLUtil::splitPath($this->_path);
+        list($dir, $base) = Uri\split($this->_path);
         return $base;
     }
 
@@ -231,7 +231,7 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
             }
         }
         if (isset($this->_item['modified'])) {
-            $response['{DAV:}getlastmodified'] = new DAV\Property\GetLastModified(
+            $response['{DAV:}getlastmodified'] = new DAV\Xml\Property\GetLastModified(
                 $this->_item['modified']
             );
         }

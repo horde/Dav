@@ -13,6 +13,7 @@
 
 use Sabre\DAV;
 use Sabre\CalDAV\Backend;
+use Sabre\Uri;
 
 /**
  * The calendar and task list backend wrapper.
@@ -75,7 +76,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      */
     public function getCalendarsForUser($principalUri)
     {
-        list($prefix, $user) = DAV\URLUtil::splitPath($principalUri);
+        list($prefix, $user) = Uri\split($principalUri);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }

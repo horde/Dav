@@ -13,6 +13,7 @@
 
 use Sabre\DAV;
 use Sabre\CardDAV\Backend;
+use Sabre\Uri;
 
 /**
  * The address book backend wrapper.
@@ -50,7 +51,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      */
     public function getAddressBooksForUser($principalUri)
     {
-        list($prefix, $user) = DAV\URLUtil::splitPath($principalUri);
+        list($prefix, $user) = Uri\split($principalUri);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }
