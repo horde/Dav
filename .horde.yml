@@ -32,7 +32,7 @@ dependencies:
       horde/http: ^3
       horde/stream: ^2
       horde/translation: ^3
-      sabre/dav: ^3
+      sabre/dav: ^4.1
     ext:
       ctype: '*'
       date: '*'

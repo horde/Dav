@@ -22,7 +22,7 @@
     "require": {
         "horde/horde-installer-plugin": "*",
         "php": "^7",
-        "sabre/dav": "^3",
+        "sabre/dav": "^4.1",
         "horde/auth": "^3",
         "horde/core": "^3",
         "horde/http": "^3",
