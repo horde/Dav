@@ -1,7 +1,7 @@
 {
     "name": "horde/dav",
     "description": "WebDAV, CalDAV, and CardDAV library",
-    "type": "horde-library",
+    "type": "library",
     "homepage": "https://www.horde.org",
     "license": "BSD-2-Clause",
     "authors": [
@@ -11,8 +11,7 @@
             "role": "lead"
         }
     ],
-    "version": "2.0.0alpha3",
-    "time": "2021-02-24",
+    "time": "2021-03-13",
     "repositories": [
         {
             "type": "composer",
@@ -20,14 +19,13 @@
         }
     ],
     "require": {
-        "horde/horde-installer-plugin": "*",
         "php": "^7",
-        "sabre/dav": "^4.1",
         "horde/auth": "^3",
         "horde/core": "^3",
         "horde/http": "^3",
         "horde/stream": "^2",
         "horde/translation": "^3",
+        "sabre/dav": "^4.1",
         "ext-ctype": "*",
         "ext-date": "*",
         "ext-dom": "*",
