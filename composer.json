@@ -14,17 +14,13 @@
     "version": "1.1.4",
     "time": "2016-12-15",
     "repositories": [
-        {
-            "type": "pear",
-            "url": "http://pear.horde.org"
-        }
     ],
     "require": {
         "php": ">=5.3.0,<=8.0.0alpha1",
-        "pear-pear.horde.org/Horde_Auth": ">=2.0.0@stable,<=3.0.0alpha1@stable",
-        "pear-pear.horde.org/Horde_Core": ">=2.0.0@stable,<=3.0.0alpha1@stable",
-        "pear-pear.horde.org/Horde_Http": ">=2.0.0@stable,<=3.0.0alpha1@stable",
-        "pear-pear.horde.org/Horde_Stream": ">=1.2.0@stable,<=2.0.0alpha1@stable",
-        "pear-pear.horde.org/Horde_Translation": ">=2.2.0@stable,<=3.0.0alpha1@stable"
+        "horde/auth": ">=2.0.0@stable,<=3.0.0alpha1@stable",
+        "horde/core": ">=2.0.0@stable,<=3.0.0alpha1@stable",
+        "horde/http": ">=2.0.0@stable,<=3.0.0alpha1@stable",
+        "horde/stream": ">=1.2.0@stable,<=2.0.0alpha1@stable",
+        "horde/translation": ">=2.2.0@stable,<=3.0.0alpha1@stable"
     }
 }
