@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -66,7 +67,7 @@ class Horde_Dav_Locks extends Locks\Backend\AbstractBackend
      */
     public function getLocks($uri, $returnChildLocks)
     {
-        list($app) = explode('/', $uri);
+        [$app] = explode('/', $uri);
         try {
             // @todo use $returnChildLocks when we implemented sub-tree
             // searching in Horde_Lock
@@ -74,7 +75,7 @@ class Horde_Dav_Locks extends Locks\Backend\AbstractBackend
         } catch (Horde_Lock_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
         }
-        $infos = array();
+        $infos = [];
         foreach ($locks as $lock) {
             $info = new Locks\LockInfo();
             $info->owner = $lock['lock_owner'];
@@ -99,7 +100,7 @@ class Horde_Dav_Locks extends Locks\Backend\AbstractBackend
      */
     public function lock($uri, Locks\LockInfo $lockInfo)
     {
-        list($app) = explode('/', $uri);
+        [$app] = explode('/', $uri);
         $type = $lockInfo->scope == Locks\LockInfo::EXCLUSIVE
             ? Horde_Lock::TYPE_EXCLUSIVE
             : Horde_Lock::TYPE_SHARED;

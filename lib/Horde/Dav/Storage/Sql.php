@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -57,7 +58,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->insert(
                 'INSERT INTO horde_dav_objects (id_internal, id_external, id_collection) '
                 . 'VALUES (?, ?, ?)',
-                array($internal, $external, $collection)
+                [$internal, $external, $collection]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -79,7 +80,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->insert(
                 'INSERT INTO horde_dav_collections (id_internal, id_external, id_interface) '
                 . 'VALUES (?, ?, ?)',
-                array($internal, $external, $interface)
+                [$internal, $external, $interface]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -102,7 +103,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             return $this->_db->selectValue(
                 'SELECT id_internal FROM horde_dav_objects '
                 . 'WHERE id_external = ? AND id_collection = ?',
-                array($external, $collection)
+                [$external, $collection]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -125,7 +126,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             return $this->_db->selectValue(
                 'SELECT id_external FROM horde_dav_objects '
                 . 'WHERE id_internal = ? AND id_collection = ?',
-                array($internal, $collection)
+                [$internal, $collection]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -148,7 +149,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             return $this->_db->selectValue(
                 'SELECT id_internal FROM horde_dav_collections '
                 . 'WHERE id_external = ? AND id_interface = ?',
-                array($external, $interface)
+                [$external, $interface]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -171,7 +172,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $external = $this->_db->selectValue(
                 'SELECT id_external FROM horde_dav_collections '
                 . 'WHERE id_internal = ? AND id_interface = ?',
-                array($internal, $interface)
+                [$internal, $interface]
             );
             if (!$external) {
                 $external = $interface . '~' . $internal;
@@ -198,7 +199,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             return $this->_db->selectValue(
                 'SELECT id_interface FROM horde_dav_collections '
                 . 'WHERE id_external = ?',
-                array($external)
+                [$external]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -219,7 +220,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->delete(
                 'DELETE FROM horde_dav_objects '
                 . 'WHERE id_internal = ? AND id_collection = ?',
-                array($internal, $collection)
+                [$internal, $collection]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -240,7 +241,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->delete(
                 'DELETE FROM horde_dav_objects '
                 . 'WHERE id_external = ? AND id_collection = ?',
-                array($external, $collection)
+                [$external, $collection]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -261,7 +262,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->delete(
                 'DELETE FROM horde_dav_collections '
                 . 'WHERE id_internal = ? AND id_interface = ?',
-                array($internal, $interface)
+                [$internal, $interface]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);
@@ -282,7 +283,7 @@ class Horde_Dav_Storage_Sql extends Horde_Dav_Storage_Base
             $this->_db->delete(
                 'DELETE FROM horde_dav_collections '
                 . 'WHERE id_external = ? AND id_interface = ?',
-                array($external, $interface)
+                [$external, $interface]
             );
         } catch (Horde_Db_Exception $e) {
             throw new Horde_Dav_Exception($e);

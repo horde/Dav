@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -51,7 +52,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      */
     public function getAddressBooksForUser($principalUri)
     {
-        list($prefix, $user) = Uri\split($principalUri);
+        [$prefix, $user] = Uri\split($principalUri);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }
@@ -60,7 +61,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_contacts(),
                 'davGetCollections',
-                array('args' => array($user))
+                ['args' => [$user]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -71,12 +72,10 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * Updates properties for an address book.
      *
      * @param string $addressBookId
-     * @param \Sabre\DAV\PropPatch $propPatch
+     * @param DAV\PropPatch $propPatch
      * @return void
      */
-    public function updateAddressBook($addressBookId, \Sabre\DAV\PropPatch $propPatch) 
-    {
-    }
+    public function updateAddressBook($addressBookId, DAV\PropPatch $propPatch) {}
 
     /**
      * Creates a new address book
@@ -86,9 +85,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * @param array $properties
      * @return void
      */
-    public function createAddressBook($principalUri, $url, array $properties)
-    {
-    }
+    public function createAddressBook($principalUri, $url, array $properties) {}
 
     /**
      * Deletes an entire addressbook and all its contents
@@ -96,9 +93,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * @param mixed $addressBookId
      * @return void
      */
-    public function deleteAddressBook($addressBookId)
-    {
-    }
+    public function deleteAddressBook($addressBookId) {}
 
     /**
      * Returns all cards for a specific addressbook id.
@@ -112,7 +107,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_contacts(),
                 'davGetObjects',
-                array('args' => array($addressbookId))
+                ['args' => [$addressbookId]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -132,7 +127,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_contacts(),
                 'davGetObject',
-                array('args' => array($addressBookId, $cardUri))
+                ['args' => [$addressBookId, $cardUri]]
             );
         } catch (Horde_Exception_NotFound $e) {
             return null;
@@ -170,7 +165,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_contacts(),
                 'davPutObject',
-                array('args' => array($addressBookId, $cardUri, $cardData))
+                ['args' => [$addressBookId, $cardUri, $cardData]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -190,7 +185,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_contacts(),
                 'davDeleteObject',
-                array('args' => array($addressBookId, $cardUri))
+                ['args' => [$addressBookId, $cardUri]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -201,7 +196,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * Returns the name of the application providing the 'contacts' interface.
      *
      * @return string  An application name.
-     * @throws Sabre\DAV\Exception if no contacts application is installed.
+     * @throws DAV\Exception if no contacts application is installed.
      */
     protected function _contacts()
     {

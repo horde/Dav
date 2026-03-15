@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -11,8 +12,8 @@
  * @package  Dav
  */
 
-use \Sabre\DAV;
-use \Sabre\Uri;
+use Sabre\DAV;
+use Sabre\Uri;
 
 /**
  * A file object.
@@ -23,7 +24,7 @@ use \Sabre\Uri;
  * @license   http://www.horde.org/licenses/bsd BSD
  * @package   Dav
  */
-class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
+class Horde_Dav_File extends DAV\File implements DAV\IProperties
 {
     /**
      * A registry object.
@@ -61,13 +62,13 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      *
      * @var array
      */
-    protected static $_propertyMap = array(
+    protected static $_propertyMap = [
         '{DAV:}getcontentlength'            => 'contentlength',
         '{DAV:}getcontenttype'              => 'contentype',
         '{DAV:}getetag'                     => 'etag',
         '{DAV:}owner'                       => 'owner',
         '{http://sabredav.org/ns}read-only' => 'read-only',
-    );
+    ];
 
     /**
      * Constructor.
@@ -76,9 +77,11 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      * @param string $path              The path to this file.
      * @param array $item               File details.
      */
-    public function __construct(Horde_Registry $registry, $path = null,
-                                array $item = array())
-    {
+    public function __construct(
+        Horde_Registry $registry,
+        $path = null,
+        array $item = []
+    ) {
         $this->_registry = $registry;
         $this->_path = $path;
         $this->_item = $item;
@@ -89,12 +92,12 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function delete()
     {
-        list($base) = explode('/', $this->_path);
+        [$base] = explode('/', $this->_path);
         try {
             $this->_registry->callByPackage(
                 $base,
                 'path_delete',
-                array($this->_path)
+                [$this->_path]
             );
         } catch (Horde_Exception_NotFound $e) {
             throw new DAV\Exception\NotFound($this->_path . ' not found');
@@ -112,7 +115,7 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function getName()
     {
-        list($dir, $base) = Uri\split($this->_path);
+        [$dir, $base] = Uri\split($this->_path);
         return $base;
     }
 
@@ -142,17 +145,17 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function put($data)
     {
-        list($base) = explode('/', $this->_path);
+        [$base] = explode('/', $this->_path);
         try {
             rewind($data);
             $this->_registry->callByPackage(
                 $base,
                 'put',
-                array(
+                [
                     $this->_path,
                     stream_get_contents($data),
-                    $this->getContentType() ?: 'application/octet-stream'
-                )
+                    $this->getContentType() ?: 'application/octet-stream',
+                ]
             );
         } catch (Horde_Exception_NotFound $e) {
             throw new DAV\Exception\NotFound($this->_path . ' not found');
@@ -170,10 +173,12 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function get()
     {
-        list($base) = explode('/', $this->_path);
+        [$base] = explode('/', $this->_path);
         try {
             $items = $this->_registry->callByPackage(
-                $base, 'browse', array($this->_path)
+                $base,
+                'browse',
+                [$this->_path]
             );
         } catch (Horde_Exception_NotFound $e) {
             throw new DAV\Exception\NotFound($this->_path . ' not found');
@@ -198,11 +203,9 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function getSize()
     {
-        return isset($this->_size)
-            ? $this->_size
-            : (isset($this->_item['contentlength'])
-                ? $this->_item['contentlength']
-                : null);
+        return $this->_size
+            ?? ($this->_item['contentlength']
+                ?? null);
     }
 
     /**
@@ -224,9 +227,8 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function getContentType()
     {
-        return isset($this->_item['contenttype'])
-            ? $this->_item['contenttype']
-            : null;
+        return $this->_item['contenttype']
+            ?? null;
     }
 
     /**
@@ -235,9 +237,7 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      * @param PropPatch $propPatch
      * @return void
      */
-    public function propPatch(DAV\PropPatch $propPatch)
-    {
-    }
+    public function propPatch(DAV\PropPatch $propPatch) {}
 
     /**
      * Returns a list of properties for this nodes.
@@ -247,7 +247,7 @@ class Horde_Dav_File extends Sabre\DAV\File implements DAV\IProperties
      */
     public function getProperties($properties)
     {
-        $response = array();
+        $response = [];
         foreach (self::$_propertyMap as $property => $apiProperty) {
             if (isset($this->_item[$apiProperty])) {
                 $response[$property] = $this->_item[$apiProperty];

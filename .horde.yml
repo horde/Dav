@@ -15,17 +15,17 @@ authors:
     active: true
     role: lead
 version:
-  release: 2.0.0alpha5
+  release: 2.0.0-beta1
   api: 2.0.0alpha1
 state:
-  release: alpha
+  release: beta
   api: alpha
 license:
   identifier: BSD-2-Clause
   uri: http://www.horde.org/licenses/bsd
 dependencies:
   required:
-    php: ^7.4 || ^8
+    php: ^8
     composer:
       horde/auth: ^3
       horde/core: ^3
@@ -46,3 +46,4 @@ dependencies:
   optional:
     ext:
       curl: '*'
+vendor: horde

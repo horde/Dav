@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -15,6 +16,7 @@ use Sabre\DAV;
 use Sabre\DAVACL;
 use Sabre\CalDAV;
 use Sabre\Uri;
+
 /**
  * A collection (directory) object.
  *
@@ -59,13 +61,13 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      *
      * @var array
      */
-    protected static $_propertyMap = array(
+    protected static $_propertyMap = [
         '{DAV:}getcontentlength'            => 'contentlength',
         '{DAV:}getcontenttype'              => 'contentype',
         '{DAV:}getetag'                     => 'etag',
         '{DAV:}owner'                       => 'owner',
         '{http://sabredav.org/ns}read-only' => 'read-only',
-    );
+    ];
 
     /**
      * Constructor.
@@ -75,11 +77,12 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      * @param Horde_Registry $registry  A registry object.
      * @param string $mimedb            Location of a MIME magic database.
      */
-    public function __construct($path = null,
-                                array $item = array(),
-                                Horde_Registry $registry,
-                                $mimedb)
-    {
+    public function __construct(
+        $path = null,
+        array $item = [],
+        Horde_Registry $registry,
+        $mimedb
+    ) {
         $this->_path = $path;
         $this->_item = $item;
         $this->_registry = $registry;
@@ -95,7 +98,7 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      */
     public function getName()
     {
-        list($dir, $base) = Uri\split($this->_path);
+        [$dir, $base] = Uri\split($this->_path);
         return $base;
     }
 
@@ -122,19 +125,19 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      */
     public function getChildren()
     {
-        list($app) = explode('/', $this->_path);
+        [$app] = explode('/', $this->_path);
         try {
             $items = $this->_registry->callByPackage(
                 $app,
                 'browse',
-                array(
+                [
                     'path' => $this->_path,
-                    'properties' => array(
+                    'properties' => [
                         'name', 'browseable', 'contenttype', 'contentlength',
                         'created', 'modified', 'etag', 'owner', 'read-only',
-                        'displayname'
-                    )
-                )
+                        'displayname',
+                    ],
+                ]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e);
@@ -146,11 +149,11 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
 
         if (empty($items)) {
             // No content exists at this level.
-            return array();
+            return [];
         }
 
         /* A directory full of objects has been returned. */
-        $list = array();
+        $list = [];
         foreach ($items as $path => $item) {
             if ($item['browseable']) {
                 $list[] = new Horde_Dav_Collection(
@@ -175,12 +178,13 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      */
     public function createFile($name, $data = null)
     {
-        list($app) = explode('/', $this->_path);
+        [$app] = explode('/', $this->_path);
         if (is_resource($data)) {
             rewind($data);
             $content = stream_get_contents($data);
             $type = Horde_Mime_Magic::analyzeData(
-                $content, $this->_mimedb
+                $content,
+                $this->_mimedb
             );
         } else {
             $content = $data;
@@ -194,11 +198,11 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
             $this->_registry->callByPackage(
                 $app,
                 'put',
-                array(
+                [
                     $this->_path . '/' . $name,
                     $content,
-                    $type
-                )
+                    $type,
+                ]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -224,7 +228,7 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      */
     public function getProperties($properties)
     {
-        $response = array();
+        $response = [];
         foreach (self::$_propertyMap as $property => $apiProperty) {
             if (isset($this->_item[$apiProperty])) {
                 $response[$property] = $this->_item[$apiProperty];
@@ -243,8 +247,6 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
         return $response;
     }
 
-    public function propPatch(DAV\PropPatch $propPatch) {
-
-    }
+    public function propPatch(DAV\PropPatch $propPatch) {}
 
 }

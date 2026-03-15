@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -28,7 +29,7 @@ class HordeDavRemoveUniqueIndex extends Horde_Db_Migration_Base
     {
         $this->removeIndex('horde_dav_objects', 'id_external');
         $this->addIndex('horde_dav_objects', 'id_external');
-        $this->addIndex('horde_dav_objects', array('id_external', 'id_collection'), array('unique' => true));
+        $this->addIndex('horde_dav_objects', ['id_external', 'id_collection'], ['unique' => true]);
     }
 
     /**
@@ -37,18 +38,18 @@ class HordeDavRemoveUniqueIndex extends Horde_Db_Migration_Base
     public function down()
     {
         $indexes = $this->indexes('horde_dav_objects');
-        $idx_names = array(
+        $idx_names = [
             $this->indexName(
                 'horde_dav_objects',
-                array('column' => array('id_external', 'id_collection'))
+                ['column' => ['id_external', 'id_collection']]
             ),
-            $this->indexName('horde_dav_objects', 'id_external')
-        );
+            $this->indexName('horde_dav_objects', 'id_external'),
+        ];
         foreach ($indexes as $idx) {
             if (in_array($idx->name, $idx_names)) {
-                $this->removeIndex('horde_dav_objects', array('name' => $idx->name));
+                $this->removeIndex('horde_dav_objects', ['name' => $idx->name]);
             }
         }
-        $this->addIndex('horde_dav_objects', 'id_external', array('unique' => true));
+        $this->addIndex('horde_dav_objects', 'id_external', ['unique' => true]);
     }
 }

@@ -9,7 +9,6 @@
     identifier: BSD-2-Clause
     uri: http://www.horde.org/licenses/bsd
   notes: |+
-    
 2.0.0alpha4:
   api: 2.0.0alpha1
   state:
@@ -54,6 +53,16 @@
   notes: |
     [jan] Add Turkish translation (İTÜ BİDB <sistemdestek@itu.edu.tr>).
     [jan] Update to SabreDAV 2.1 (Stefan Popp <se12m014@technikum-wien.at>).
+2.0.0-beta1:
+  api: 2.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-03-15
+  license:
+    identifier: BSD-2-Clause
+    uri: https://spdx.org/licenses/BSD-2-Clause.html
+  notes: Development mode for Dav-2.0.0alpha5
 1.1.4:
   api: 1.1.0
   state:
@@ -197,28 +206,6 @@
     [rla] Add system share support for CalDAV (Request #12342).
     [jan] Fix PUTing content from the input stream to the backend.
     [jan] Update to SabreDAV 1.8.6.
-1.0.0:
-  api: 1.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2013-06-04
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    Final release.
-1.0.0RC1:
-  api: 1.0.0beta1
-  state:
-    release: beta
-    api: beta
-  date: 2013-05-28
-  license:
-    identifier: BSD-2-Clause
-    uri: http://www.horde.org/licenses/bsd
-  notes: |
-    [jan] Fix empty collections if applications don't provide DAV methods (Bug #12275).
 1.0.0beta1:
   api: 1.0.0beta1
   state:
@@ -230,3 +217,25 @@
     uri: http://www.horde.org/licenses/bsd
   notes: |
     First beta release.
+1.0.0RC1:
+  api: 1.0.0beta1
+  state:
+    release: beta
+    api: beta
+  date: 2013-05-28
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    [jan] Fix empty collections if applications don't provide DAV methods (Bug #12275).
+1.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2013-06-04
+  license:
+    identifier: BSD-2-Clause
+    uri: http://www.horde.org/licenses/bsd
+  notes: |
+    Final release.

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -26,25 +27,25 @@ class HordeDavBaseTables extends Horde_Db_Migration_Base
      */
     public function up()
     {
-        $t = $this->createTable('horde_dav_objects', array('autoincrementKey' => false));
-        $t->column('id_collection', 'string', array('null' => false));
-        $t->column('id_internal', 'string', array('limit' => 255, 'null' => false));
-        $t->column('id_external', 'string', array('limit' => 255, 'null' => false));
+        $t = $this->createTable('horde_dav_objects', ['autoincrementKey' => false]);
+        $t->column('id_collection', 'string', ['null' => false]);
+        $t->column('id_internal', 'string', ['limit' => 255, 'null' => false]);
+        $t->column('id_external', 'string', ['limit' => 255, 'null' => false]);
         $t->end();
 
         $this->addIndex('horde_dav_objects', 'id_collection');
-        $this->addIndex('horde_dav_objects', 'id_internal', array('unique' => true));
-        $this->addIndex('horde_dav_objects', 'id_external', array('unique' => true));
+        $this->addIndex('horde_dav_objects', 'id_internal', ['unique' => true]);
+        $this->addIndex('horde_dav_objects', 'id_external', ['unique' => true]);
 
-        $t = $this->createTable('horde_dav_collections', array('autoincrementKey' => false));
-        $t->column('id_interface', 'string', array('limit' => 255, 'null' => false));
-        $t->column('id_internal', 'string', array('limit' => 255, 'null' => false));
-        $t->column('id_external', 'string', array('limit' => 255, 'null' => false));
+        $t = $this->createTable('horde_dav_collections', ['autoincrementKey' => false]);
+        $t->column('id_interface', 'string', ['limit' => 255, 'null' => false]);
+        $t->column('id_internal', 'string', ['limit' => 255, 'null' => false]);
+        $t->column('id_external', 'string', ['limit' => 255, 'null' => false]);
         $t->end();
 
         $this->addIndex('horde_dav_collections', 'id_interface');
         $this->addIndex('horde_dav_collections', 'id_internal');
-        $this->addIndex('horde_dav_collections', 'id_external', array('unique' => true));
+        $this->addIndex('horde_dav_collections', 'id_external', ['unique' => true]);
     }
 
     /**

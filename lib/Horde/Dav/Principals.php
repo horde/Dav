@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -65,7 +66,7 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
         if ($prefixPath != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefixPath);
         }
-        $users = array($this->_getUserInfo('-system-'));
+        $users = [$this->_getUserInfo('-system-')];
         if (!$this->_auth->hasCapability('list')) {
             return $users;
         }
@@ -83,13 +84,13 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      */
     public function getPrincipalByPath($path)
     {
-        list($prefix, $user) = Uri\split($path);
+        [$prefix, $user] = Uri\split($path);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }
-        if ($this->_auth->hasCapability('list') &&
-            !$this->_auth->exists($user) &&
-            $user != '-system-') {
+        if ($this->_auth->hasCapability('list')
+            && !$this->_auth->exists($user)
+            && $user != '-system-') {
             throw new DAV\Exception\NotFound('User ' . $user . ' does not exist');
         }
         return $this->_getUserInfo($user);
@@ -105,30 +106,28 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
     protected function _getUserInfo($user)
     {
         if ($user == '-system-') {
-            return array(
+            return [
                 'uri' => 'principals/-system-',
                 '{DAV:}displayname' => Horde_Dav_Translation::t("System"),
-            );
+            ];
         }
 
         $identity = $this->_identities->create($user);
-        return array(
+        return [
             'uri' => 'principals/' . $user,
             '{DAV:}displayname' => $identity->getName(),
-            '{http://sabredav.org/ns}email-address' => (string)$identity->getDefaultFromAddress()
-        );
+            '{http://sabredav.org/ns}email-address' => (string) $identity->getDefaultFromAddress(),
+        ];
     }
 
     /**
      * Updates one ore more webdav properties on a principal.
      *
      * @param string $path
-     * @param \Sabre\DAV\PropPatch $propPatch
+     * @param DAV\PropPatch $propPatch
      * @return void
      */
-    public function updatePrincipal($path, \Sabre\DAV\PropPatch $propPatch)
-    {
-    }
+    public function updatePrincipal($path, DAV\PropPatch $propPatch) {}
 
     /**
      * This method is used to search for principals matching a set of
@@ -141,7 +140,7 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      */
     public function searchPrincipals($prefixPath, array $searchProperties, $test = 'allof')
     {
-        return array();
+        return [];
     }
 
     /**
@@ -152,7 +151,7 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      */
     public function getGroupMemberSet($principal)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -163,9 +162,9 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      */
     public function getGroupMembership($principal)
     {
-         // All users should have access to the -system- share
-         // Which should return only calendars the user sees in Horde.
-        return array('principals/-system-');
+        // All users should have access to the -system- share
+        // Which should return only calendars the user sees in Horde.
+        return ['principals/-system-'];
     }
 
     /**
@@ -177,7 +176,5 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      * @param array $members
      * @return void
      */
-    public function setGroupMemberSet($principal, array $members)
-    {
-    }
+    public function setGroupMemberSet($principal, array $members) {}
 }

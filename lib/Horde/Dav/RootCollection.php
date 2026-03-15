@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -36,7 +37,7 @@ class Horde_Dav_RootCollection extends DAV\Collection
      *
      * @var array
      */
-    protected $_collections = array();
+    protected $_collections = [];
 
     /**
      * The path to a MIME magic database.
@@ -53,10 +54,11 @@ class Horde_Dav_RootCollection extends DAV\Collection
      *                                  root node.
      * @param string $mimedb            Location of a MIME magic database.
      */
-    public function __construct(Horde_Registry $registry,
-                                array $collections,
-                                $mimedb)
-    {
+    public function __construct(
+        Horde_Registry $registry,
+        array $collections,
+        $mimedb
+    ) {
         $this->_registry = $registry;
         $this->_collections = $collections;
         $this->_mimedb = $mimedb;
@@ -86,7 +88,7 @@ class Horde_Dav_RootCollection extends DAV\Collection
             if ($this->_registry->hasMethod('browse', $app)) {
                 $apps[] = new Horde_Dav_Collection(
                     $app,
-                    array(),
+                    [],
                     $this->_registry,
                     $this->_mimedb
                 );

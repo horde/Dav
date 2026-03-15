@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
@@ -45,7 +46,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      *
      * @var array
      */
-    protected $_interfaces = array();
+    protected $_interfaces = [];
 
     /**
      * Constructor.
@@ -57,7 +58,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
     {
         $this->_registry = $registry;
         $this->_storage = $storage;
-        foreach (array('calendar', 'tasks') as $interface) {
+        foreach (['calendar', 'tasks'] as $interface) {
             try {
                 $application = $this->_registry->hasInterface($interface);
                 if ($application) {
@@ -76,20 +77,20 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      */
     public function getCalendarsForUser($principalUri)
     {
-        list($prefix, $user) = Uri\split($principalUri);
+        [$prefix, $user] = Uri\split($principalUri);
         if ($prefix != 'principals') {
             throw new DAV\Exception\NotFound('Invalid principal prefix path ' . $prefix);
         }
 
-        $collections = array();
+        $collections = [];
         foreach ($this->_interfaces as $interface) {
             try {
                 $collections = array_merge(
                     $collections,
-                    (array)$this->_registry->callAppMethod(
+                    (array) $this->_registry->callAppMethod(
                         $interface,
                         'davGetCollections',
-                        array('args' => array($user))
+                        ['args' => [$user]]
                     )
                 );
             } catch (Horde_Exception $e) {
@@ -110,10 +111,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      * @param array $properties
      * @return void
      */
-    public function createCalendar($principalUri, $calendarUri, array $properties)
-
-    {
-    }
+    public function createCalendar($principalUri, $calendarUri, array $properties) {}
 
     /**
      * Delete a calendar and all it's objects
@@ -121,9 +119,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      * @param mixed $calendarId
      * @return void
      */
-    public function deleteCalendar($calendarId)
-    {
-    }
+    public function deleteCalendar($calendarId) {}
 
     /**
      * Returns all calendar objects within a calendar.
@@ -137,7 +133,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_interface($calendarId),
                 'davGetObjects',
-                array('args' => array($calendarId))
+                ['args' => [$calendarId]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -158,7 +154,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_interface($calendarId),
                 'davGetObject',
-                array('args' => array($calendarId, $objectUri))
+                ['args' => [$calendarId, $objectUri]]
             );
         } catch (Horde_Exception_NotFound $e) {
             return null;
@@ -194,7 +190,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_interface($calendarId),
                 'davPutObject',
-                array('args' => array($calendarId, $objectUri, $calendarData))
+                ['args' => [$calendarId, $objectUri, $calendarData]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -214,7 +210,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
             return $this->_registry->callAppMethod(
                 $this->_interface($calendarId),
                 'davDeleteObject',
-                array('args' => array($calendarId, $objectUri))
+                ['args' => [$calendarId, $objectUri]]
             );
         } catch (Horde_Exception $e) {
             throw new DAV\Exception($e->getMessage(), $e->getCode(), $e);
@@ -227,7 +223,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      * @param string $calendarId  An external calendar or task list id.
      *
      * @return string  The application that owns the calendar or task list.
-     * @throws Sabre\DAV\Exception if the application cannot be found.
+     * @throws DAV\Exception if the application cannot be found.
      */
     protected function _interface($calendarId)
     {
