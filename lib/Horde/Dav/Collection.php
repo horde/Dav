@@ -78,8 +78,8 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
      * @param string $mimedb            Location of a MIME magic database.
      */
     public function __construct(
-        $path = null,
-        array $item = [],
+        $path,
+        array $item,
         Horde_Registry $registry,
         $mimedb
     ) {
@@ -247,8 +247,6 @@ class Horde_Dav_Collection extends DAV\Collection implements DAV\IProperties
         return $response;
     }
 
-    public function propPatch(DAV\PropPatch $propPatch)
-    {
-    }
+    public function propPatch(DAV\PropPatch $propPatch) {}
 
 }

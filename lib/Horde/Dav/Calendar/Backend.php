@@ -111,9 +111,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      * @param array $properties
      * @return void
      */
-    public function createCalendar($principalUri, $calendarUri, array $properties)
-    {
-    }
+    public function createCalendar($principalUri, $calendarUri, array $properties) {}
 
     /**
      * Delete a calendar and all it's objects
@@ -121,9 +119,7 @@ class Horde_Dav_Calendar_Backend extends Backend\AbstractBackend
      * @param mixed $calendarId
      * @return void
      */
-    public function deleteCalendar($calendarId)
-    {
-    }
+    public function deleteCalendar($calendarId) {}
 
     /**
      * Returns all calendar objects within a calendar.

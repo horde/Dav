@@ -21,6 +21,4 @@
  * @license   http://www.horde.org/licenses/bsd BSD
  * @package   Dav
  */
-class Horde_Dav_Exception extends Horde_Exception_Wrapped
-{
-}
+class Horde_Dav_Exception extends Horde_Exception_Wrapped {}

@@ -75,9 +75,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * @param DAV\PropPatch $propPatch
      * @return void
      */
-    public function updateAddressBook($addressBookId, DAV\PropPatch $propPatch)
-    {
-    }
+    public function updateAddressBook($addressBookId, DAV\PropPatch $propPatch) {}
 
     /**
      * Creates a new address book
@@ -87,9 +85,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * @param array $properties
      * @return void
      */
-    public function createAddressBook($principalUri, $url, array $properties)
-    {
-    }
+    public function createAddressBook($principalUri, $url, array $properties) {}
 
     /**
      * Deletes an entire addressbook and all its contents
@@ -97,9 +93,7 @@ class Horde_Dav_Contacts_Backend extends Backend\AbstractBackend
      * @param mixed $addressBookId
      * @return void
      */
-    public function deleteAddressBook($addressBookId)
-    {
-    }
+    public function deleteAddressBook($addressBookId) {}
 
     /**
      * Returns all cards for a specific addressbook id.

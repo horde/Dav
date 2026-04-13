@@ -127,9 +127,7 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      * @param DAV\PropPatch $propPatch
      * @return void
      */
-    public function updatePrincipal($path, DAV\PropPatch $propPatch)
-    {
-    }
+    public function updatePrincipal($path, DAV\PropPatch $propPatch) {}
 
     /**
      * This method is used to search for principals matching a set of
@@ -178,7 +176,5 @@ class Horde_Dav_Principals extends DAVACL\PrincipalBackend\AbstractBackend
      * @param array $members
      * @return void
      */
-    public function setGroupMemberSet($principal, array $members)
-    {
-    }
+    public function setGroupMemberSet($principal, array $members) {}
 }
