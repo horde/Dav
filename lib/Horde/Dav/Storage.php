@@ -6,7 +6,7 @@
  * See the enclosed file LICENSE for license information (BSD). If you
  * did not receive this file, see http://www.horde.org/licenses/bsd.
  *
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @category Horde
  * @license  http://www.horde.org/licenses/bsd BSD
  * @package  Dav
@@ -19,7 +19,7 @@
  * Retconned from abstract Horde_Dav_Storage_Base.
  * Existing injector id Horde_Dav_Storage may be used in constructors.
  *
- * @author    Ralf Lang <lang@b1-systems.de>
+ * @author    Ralf Lang <ralf.lang@ralf-lang.de>
  * @category  Horde
  * @copyright 2013-2021 Horde LLC
  * @license   http://www.horde.org/licenses/bsd BSD
