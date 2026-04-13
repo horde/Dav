@@ -2,6 +2,4 @@
 
 namespace Horde\Dav;
 
-class Webdav
-{
-}
+class Webdav {}

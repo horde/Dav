@@ -20,13 +20,11 @@ class PrincipalsTest extends TestCase
     protected function setUp(): void
     {
         $this->auth = $this->createMock(Horde_Auth_Base::class);
-        $this->identities = new class () {
+        $this->identities = new class {
             public function create(string $user): object
             {
                 return new class ($user) {
-                    public function __construct(private readonly string $user)
-                    {
-                    }
+                    public function __construct(private readonly string $user) {}
 
                     public function getName(): string
                     {
