@@ -237,7 +237,9 @@ class Horde_Dav_File extends DAV\File implements DAV\IProperties
      * @param PropPatch $propPatch
      * @return void
      */
-    public function propPatch(DAV\PropPatch $propPatch) {}
+    public function propPatch(DAV\PropPatch $propPatch)
+    {
+    }
 
     /**
      * Returns a list of properties for this nodes.
